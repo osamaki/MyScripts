@@ -1,3 +1,12 @@
+# backup
+function bu(){
+    for fname in $@
+    do
+        cp "$fname" "$fname.bu"
+    done
+}
+
+
 prefix() {
 	# >>> echo "message" | prefix "[hoge] "
 	# [hoge] message
