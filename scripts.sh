@@ -1,8 +1,8 @@
 # backup
-function bu(){
+function bk(){
     for fname in $@
     do
-        cp "$fname" "$fname.bu"
+        cp "$fname" "$fname.bk"
     done
 }
 
