@@ -40,6 +40,14 @@ indent() {
 }
 
 
+function expand_environment_variables(){
+	# eval コマンドによりシェルに環境変数を展開させる
+	# ダブルクォーテーションが消えてしまうので、エスケープしさらにダブルクォーテーションで囲んでおく
+	# sed 's/"/\\"/g'  | sed -E 's/(\\"[^\\"]+\\")/"\0"/g' | sed -e 's/^/echo /g' | eval "$(cat -)" # for Linux
+	sed 's/"/\\"/g'  | sed -E 's/(\\"[^\\"]+\\")/"\0"/g' | sed -e 's/^/echo /g' | xargs -I{} sh -c "{}" # for Mac
+}
+
+
 # fixme: read
 confirm() {
 	# >>> confirm "Please input yes!:"
